@@ -1,5 +1,5 @@
 <?php
-   session_start();
+  session_start();
 
 ?>
 
@@ -54,6 +54,11 @@
                     "</tr>",
                     "</tbody>",
                 "</table>";
+            }
+           
+            if(isset($_SESSION['message'])){
+                echo $_SESSION['message'];
+                unset($_SESSION['message']); 
             }
          
             
