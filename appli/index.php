@@ -11,7 +11,14 @@
         <div class="d-grid gap-2 col-6 mx-auto">
         
             <input class="btn btn-primary" type="submit" name="submit" value="ajouter le produit">
+      
             <a href="recap.php" class="btn btn-light" type="submit"  role="button" >Panier</a>
+
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+               99+
+                <span class="visually-hidden"></span>
+            </span>
+            </button>
 
             <h1>Ajouter un produit</h1>
         </div>

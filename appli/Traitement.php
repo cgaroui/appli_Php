@@ -13,7 +13,8 @@
                 "name"=>$name,
                 "price"=>$price,
                 "qtt"  =>$qtt,
-                "total"=>$price*$qtt
+                "total"=>$price*$qtt,
+                
             ];
             $_SESSION['products'][] = $product;
 
