@@ -1,5 +1,5 @@
 <?php
-    session_start();
+//   session_start();
 
 ?>
 
@@ -26,8 +26,7 @@
                                 "<th>Nom</th>",
                                 "<th>Prix</th>",
                                 "<th>Quantité</th>",
-                                "<th>Total</th>",
-                                
+                                "<th>Total</th>",   
                             "</tr>",
                         
                         "</thead>",
