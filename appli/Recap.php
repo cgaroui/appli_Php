@@ -46,7 +46,7 @@
                     $nbProduits+=$product['qtt'];
                 }      
                 echo "<tr>",
-                        "<td colspan=1>Nombre de produits : </td>",
+                        "<td colspan=1>Nombre total de produits : </td>",
                         "<td><strong> ".number_format($nbProduits,0)." </strong></td>",
                         "<td colspan=2>Total Genéral : </td>.",
                         "<td><strong>".number_format($totalGeneral, 2, "," , "&nbsp;")."&nbsp;€</strong></td>",
