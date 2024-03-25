@@ -3,7 +3,7 @@
 require_once('nbArticles.php');
 
 
-session_start();
+//session_start();
 
 // Affiche  message s'il est présent dans la session
 if (isset($_SESSION['message'])) {
