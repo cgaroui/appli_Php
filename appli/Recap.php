@@ -15,7 +15,7 @@
     </head>
     <body>
         <?php
-            if(!isset($_SESSION['products']) || empty($_SESSION['products'])){
+            if(!isset($_SESSION['products']) || empty($_SESSION['products'])){ //isset pour verifier qu'aucun produit n'existe et le empty c'est pour verifier que la session product est vide 
                 echo "<p>Aucun produit en session..</p>";
             }
             else{
@@ -45,20 +45,20 @@
                     $totalGeneral+=$product['total'];
                     $nbProduits+=$product['qtt'];
                 }      
-                echo "<tr>",
+                echo "<tr>",    
                         "<td colspan=1>Nombre total de produits : </td>",
-                        "<td><strong> ".number_format($nbProduits,0)." </strong></td>",
+                        "<td><strong> ".number_format($nbProduits,0)." </strong></td>",//pour afficher le resultat de nb broduit sous forme entier avec 0 decimal apres la virgule(quantité)
                         "<td colspan=2>Total Genéral : </td>.",
-                        "<td><strong>".number_format($totalGeneral, 2, "," , "&nbsp;")."&nbsp;€</strong></td>",
+                        "<td><strong>".number_format($totalGeneral, 2, "," , "&nbsp;")."&nbsp;€</strong></td>",//pour afficher le resultat de nb broduit sous forme entier avec 2 decimaux apres la virgule(prix)
                        
                     "</tr>",
                     "</tbody>",
                 "</table>";
             }
            
-            if(isset($_SESSION['message'])){
-                echo $_SESSION['message'];
-                unset($_SESSION['message']); 
+            if(isset($_SESSION['message'])){    //s'il ya un message dans la session 
+                echo $_SESSION['message'];      //on l'affiche 
+                unset($_SESSION['message']);    //ensuite il disparait lorsqu'on raffréchit la page 
             }
             
           
