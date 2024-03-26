@@ -37,7 +37,7 @@ if (isset($_SESSION['message'])) {
         
 
         <div class="d-grid gap-2 col-6 mx-auto">
-            <form action= "traitement.php" method="post">           <!-- Utilisation de la méthode POST pour envoyer les données du formulaire au serveur -->
+            <form action="traitement.php?action=add" method="post">           <!-- Utilisation de la méthode POST pour envoyer les données du formulaire au serveur -->
             
                 <label >
                     Nom du produit : <br>
@@ -46,12 +46,12 @@ if (isset($_SESSION['message'])) {
             
                 <label >
                     Prix du produit : <br>
-                    <input style="width: 300px;"type="number" step="any" name="price">
+                    <input min=1 style="width: 300px;"type="number" step="any" name="price">
                 </label>
             
                 <label >
                     Quantité desirée : <br>
-                    <input id="" style="width: 300px;" type="number" name="qtt" value="1">
+                    <input min=1 id="" style="width: 300px;" type="number" name="qtt" value="1">
                 </label>
             
             

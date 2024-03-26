@@ -33,17 +33,21 @@
                         "<tbody>"; 
                 $totalGeneral = 0;
                 $nbProduits =0;
+
                 foreach($_SESSION['products'] as $index => $product){  //permet d'excuter produit par produit, les mêmes instructions qui vont permettre l'affichage uniforme de chacun d'entre eux.
-                    echo "<tr>",
-                            "<td>".$index."</td>",
-                            "<td>".$product['name']."</td>",
-                            "<td>".$product['price']."</td>",
-                            "<td>".$product['qtt']."</td>",
-                            "<td>".$product['total']."</td>",
-                            
-                        "</tr>";
-                    $totalGeneral+=$product['total'];
-                    $nbProduits+=$product['qtt'];
+                 
+                    echo "<tr>" .
+                    "<td>" . $index . "</td>" .
+                    "<td>" . $product['name'] . "</td>" .
+                    "<td>" . $product['price'] . "</td>" .
+                    "<td>" . $product['qtt'] .
+                    "<a id=qtt href='traitement.php?action=ajouterQtt' class='btn btn-success'>+</a>" .
+                    "<a href='traitement.php?action=diminuerQtt&id' class='btn btn-danger'>-</a>" .
+                    "</td>" .
+                "</tr>";
+            
+                
+        
                 }      
                 echo "<tr>",    
                         "<td colspan=1>Nombre total de produits : </td>",
@@ -62,37 +66,8 @@
             }
             
           
-            if(isset($_GET['action'])){
-
-                switch($_GET['action']){
-                    case "viderPanier":
-                        if (isset($_SESSION['products'])) {
-                            unset($_SESSION['products']);
-                            
-                        }
-                        header("Location:recap.php");die;
-                        break;
-                    
-                    case "diminuerQtt":
-                        if(isset($_SESSION['products']) && isset($_SESSION['products'][$id]) && $_SESSION['products'][$id]['qtt'] >= 1){ // on verifie bien les 3 conditions entre les && : 1: que session produit existe bien et qu'elle n'est pas nulle ,2: que session produit est liée a un id et 3:que la qtt initiale est bien > 0 (existante)
-                            $_SESSION['products'][$id]['qtt']--; //pour decrementer la quantitée de 1
-                            $_SESSION['products'][$id]['total'] = $_SESSION['products'][$id]['qtt']*$_SESSION['products'][$id]['price']; //on reevalue le prix totale apres changement de quantitée 
-                            if ($_SESSION['products'][$id]['qtt'] == 1) {
-                                unset($_SESSION['products'][$id]);  //on verifie si la quantitée est nul apres suppresion de 1 qtt produit et on envoie un message l'indiquant à l'utilisateur 
-                                $_SESSION['message'] = '<div  id="message" class="alert alert-success" role="alert"> Votre produit a été supprimé du panier </div>';
-                            } else {
-                                //on affiche rien car il yaura seulement la quatité qui s'est decrementé
-                               
-                            }
-                        
-                        }
-
-
-
-
-
-                }
-            }
+            
+            
         
         ?>
         
