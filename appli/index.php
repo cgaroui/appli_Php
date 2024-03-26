@@ -51,7 +51,7 @@ if (isset($_SESSION['message'])) {
             
                 <label >
                     Quantité desirée : <br>
-                    <input style="width: 300px;" type="number" name="qtt" value="1">
+                    <input id="" style="width: 300px;" type="number" name="qtt" value="1">
                 </label>
             
             
@@ -60,6 +60,11 @@ if (isset($_SESSION['message'])) {
             </form>
            
          </div>
+                <!-- <div class="float-sm-end">Float end on viewports sized SM (small) or wider</div><br>
+        <div class="float-md-end">Float end on viewports sized MD (medium) or wider</div><br>
+        <div class="float-lg-end">Float end on viewports sized LG (large) or wider</div><br>
+        <div class="float-xl-end">Float end on viewports sized XL (extra large) or wider</div><br>
+        <div class="float-xxl-end">Float end on viewports sized XXL (extra extra large) or wider</div><br> -->
         
     </body>
 </html>
