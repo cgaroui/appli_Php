@@ -37,6 +37,7 @@
             }
                 $totalGeneral = 0;
                 $nbProduits =0;
+               
 
                 foreach($_SESSION['products'] as $index => $product){  //permet d'excuter produit par produit, les mêmes instructions qui vont permettre l'affichage uniforme de chacun d'entre eux.
                 
@@ -56,7 +57,7 @@
                          "</tr>";
                          $nbProduits +=$product['qtt'];             //calcul la quantité d'elements total dans le panier (additionne la qtt de tous les produits dans le panier) 
                          $totalGeneral += $product['price']*$product['qtt'];        //calcul le prix total (additionne le prix de tous les produits dans le panier)
-
+                        
                 }
                         
                  
