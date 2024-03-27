@@ -82,7 +82,7 @@
                             // $_SESSION['products'][$id]['total'] = $_SESSION['products'][$id]['qtt']*$_SESSION['products'][$id]['price']; //on reevalue le prix totale apres changement de quantitée 
                             if ($_SESSION['products'][$id]['qtt'] == 0) {
                                 unset($_SESSION['products'][$id]);  //on verifie si la quantitée est nul apres suppresion de 1 qtt produit et on envoie un message l'indiquant à l'utilisateur 
-                                $_SESSION['message'] = '<div  id="message" class="alert alert-success" role="alert"> Votre produit a été supprimé du panier </div>';
+                                $_SESSION['message'] = '<div  id="message" class="alert alert-warning" role="alert"> Votre produit a été supprimé du panier </div>';
                             } else {
                               
                                
