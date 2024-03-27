@@ -1,6 +1,6 @@
 <?php
   session_start();
-
+   
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +22,7 @@
                 echo "<table>",                     //initialisation du tableau HTML
                         "<thead>",
                             "<tr>",
-                                "<th >#</th>",
+                                "<th>#</th>",
                                 "<th>Nom</th>",
                                 "<th>Prix</th>",
                                 "<th>Quantité</th>",
@@ -38,21 +38,22 @@
 
                 foreach($_SESSION['products'] as $index => $product){  //permet d'excuter produit par produit, les mêmes instructions qui vont permettre l'affichage uniforme de chacun d'entre eux.
                 
-                    
+                    $prixToalProduit = $product['price']*$product['qtt'] ;  //calcul le prix total d'un SEUL produit en fonction de la quantité qu'on choisi
                     echo "<tr>" .
-                            "<td " . $index . "</td>" .
-                            "<td " . $product['name'] . "</td>" .
+                            "<td>" . $index . "</td>" .
+                            "<td>" . $product['name'] . "</td>" .
                             "<td>" . $product['price'] . "</td>" .
                             "<td>" . $product['qtt'] .
-                            "&nbsp;&nbsp;"
-                            ."<a id=qtt href='traitement.php?action=ajouterQtt&id=$index' class='btn btn-success'>+</a>" . "&nbsp;&nbsp;".
-                                "<a id=qtt href='traitement.php?action=diminuerQtt&id=$index' class='btn btn-danger'>-</a>" .
+                                "&nbsp;&nbsp;"
+                                ."<a id=qtt href='traitement.php?action=ajouterQtt&id=$index' class='btn btn-success'>+</a>" . "&nbsp;&nbsp;".
+                                    "<a id=qtt href='traitement.php?action=diminuerQtt&id=$index' class='btn btn-danger'>-</a>" .
                             "</td>" .
+                            "<td>".$prixToalProduit."</td>",
 
            
                          "</tr>";
-                         $nbProduits +=$product['qtt'];
-                         $totalGeneral += $product['price']*$product['qtt'];
+                         $nbProduits +=$product['qtt'];             //calcul la quantité d'elements total dans le panier (additionne la qtt de tous les produits dans le panier) 
+                         $totalGeneral += $product['price']*$product['qtt'];        //calcul le prix total (additionne le prix de tous les produits dans le panier)
 
                 }
                         
