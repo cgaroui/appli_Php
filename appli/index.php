@@ -37,11 +37,11 @@ if (isset($_SESSION['message'])) {
         
 
         <div class="d-grid gap-2 col-6 mx-auto">
-            <form action="traitement.php?action=add" method="post">           <!-- Utilisation de la méthode POST pour envoyer les données du formulaire au serveur -->
+            <form action="traitement.php?action=ajouterProduit" method="post">           <!-- Utilisation de la méthode POST pour envoyer les données du formulaire au serveur -->
             
                 <label >
                     Nom du produit : <br>
-                    <input style="width: 300px;" type="text" name="name">
+                    <input   style="width: 300px;" type="text" name="name">
                 </label>
             
                 <label >
