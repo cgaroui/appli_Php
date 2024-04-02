@@ -21,19 +21,20 @@
                 echo "<p>Aucun produit en session..</p>";
             }
             else{
-                echo "<table  class='table-secondary'>",                     //initialisation du tableau HTML
-                        "<thead>",
-                            "<tr>",
-                                "<th>#</th>",
-                                "<th>Nom</th>",
-                                "<th>Prix</th>",
-                                "<th>Quantité</th>",
-                                "<th>Total</th>",   
-                            "</tr>",
-                        
-                        "</thead>",
-                        "<tbody>"; 
-
+                echo "<div class='table-responsive'>",
+                        "<table  class='table table-bordered border-primary'>",                     //initialisation du tableau HTML
+                            "<thead>",
+                                "<tr class='table-primary'>",
+                                    "<th>#</th>",
+                                    "<th>Nom</th>",
+                                    "<th>Prix</th>",
+                                    "<th>Quantité</th>",
+                                    "<th>Total</th>",   
+                                "</tr>",
+                            
+                            "</thead>",
+                            "<tbody>", 
+                    "</div>";
             }
                 $totalGeneral = 0;
                 $nbProduits =0;
@@ -48,8 +49,8 @@
                             "<td>" . $product['price'] . "</td>" .
                             "<td>" . $product['qtt'] .
                                 "&nbsp;&nbsp;"
-                                ."<a id=qtt href='traitement.php?action=ajouterQtt&id=$index' class='btn btn-success'>+</a>" . "&nbsp;&nbsp;".
-                                    "<a id=qtt href='traitement.php?action=diminuerQtt&id=$index' class='btn btn-danger'>-</a>" .
+                                ."<a id=qtt href='traitement.php?action=ajouterQtt&id=$index' class='btn btn-info'>+</a>" . "&nbsp;&nbsp;".
+                                    "<a id=qtt href='traitement.php?action=diminuerQtt&id=$index' class='btn btn-secondary'>-</a>" .
                             "</td>" .
                             "<td>".$prixToalProduit."</td>",
 
