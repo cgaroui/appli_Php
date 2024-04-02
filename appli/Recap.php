@@ -36,7 +36,7 @@
                         "&nbsp;&nbsp;"
                         ."<a id=qtt href='traitement.php?action=ajouterQtt&id=$index' class='btn btn-info'>+</a>" . "&nbsp;&nbsp;".
                             "<a id=qtt href='traitement.php?action=diminuerQtt&id=$index' class='btn btn-secondary'>-</a>" ."&nbsp;&nbsp;".
-                            "<a id=qtt href='traitement.php?action=supprimer&id=$index' class='btn btn-info'>Supprimer</a>" . 
+                            "<a id='qtt' href='traitement.php?action=supprimer&id=$index' class='btn btn-info'>Supprimer</a>" . 
 
                             "</td>" .
                     "<td>".$prixToalProduit."</td>",
@@ -60,7 +60,7 @@
             "</tr>",
             "</tbody>",
         "</table>";
-        
+
         echo "<a id='' href='traitement.php?action=viderPanier&id=$index' class='btn btn-info ml-3'>vider panier</a>" ;
 
     

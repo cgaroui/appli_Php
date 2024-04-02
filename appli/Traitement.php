@@ -92,12 +92,17 @@ session_start();
                 
                 header("Location: recap.php"); exit;
                 break;
-                
+
                 case "supprimer": 
-                    if (isset($_SESSION['products'][$id])) {
-                        unset($_SESSION['products'][$id]);
+                    //vérifier si le parametre id est defini dans l'url et si le produit existe 
+                    if (isset($_GET["id"]) && isset($_SESSION['products'][$_GET["id"]])) {
+                        $supprimerProd = $_SESSION['products'][$_GET["id"]];
+                        //suppprimer le produit 
+                        unset($_SESSION['products'][$_GET['id']]);
+                        //afficher le message indiquant la supression 
                         $_SESSION['message'] = '<div class="alert alert-success" role="alert"> Le produit a été supprimé avec succès ! </div>';
-                    } else {
+                    } 
+                    else {//sinnon message d'erreur 
                         $_SESSION['message'] = '<div class="alert alert-danger" role="alert"> le produit à supprimer n\'existe pas ! </div>';
                     }
                     
