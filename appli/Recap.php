@@ -3,19 +3,10 @@
    
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
 
         
 
-        <title>Récapitulatif des produits</title>
-    </head>
-    <body>
+
         <?php
             if(!isset($_SESSION['products']) || empty($_SESSION['products'])){ //isset pour verifier qu'aucun produit n'existe et le empty c'est pour verifier que la session product est vide 
                 echo "<p>Aucun produit en session..</p>";
@@ -85,6 +76,9 @@
             
         
         ?>
-        
-    </body>
-</html>
+
+<?php
+    $content = ob_get_clean();
+    $titre = "Récapitulatif des produits";
+    require_once "template.php"; 
+?>
