@@ -7,7 +7,7 @@
     }
     else{
         echo "<div class='table-responsive'>",
-                "<table  class='table table-bordered border-primary'>",                     //initialisation du tableau HTML
+                "<table  class='table table-bordered border-primary '>",                     //initialisation du tableau HTML
                     "<thead>",
                         "<tr class='table-primary'>",
                             "<th>#</th>",
