@@ -72,26 +72,39 @@ session_start();
                 
             
             
-            case "diminuerQtt":
-                $id = $_GET['id'];
-                if(isset($_SESSION['products']) && isset($id) && $_SESSION['products'][$id]['qtt'] >0){ // on verifie bien les 3 conditions entre les && : 1: que session produit existe bien et qu'elle n'est pas nulle ,2: que session produit est liée a un id et 3:que la qtt initiale est bien > 0 (existante)
-                    
-                    
-                    $_SESSION['products'][$id]['qtt']--; //pour decrementer la quantitée de 1
-                    $_SESSION['message'] = '<div class="alert alert-success" role="alert"> Vous avez diminué la quantité de votre produit! </div>';
-                    // $_SESSION['products'][$id]['total'] = $_SESSION['products'][$id]['qtt']*$_SESSION['products'][$id]['price']; //on reevalue le prix totale apres changement de quantitée 
-                    if ($_SESSION['products'][$id]['qtt'] == 0) {
-                        unset($_SESSION['products'][$id]);  //on verifie si la quantitée est nul apres suppresion de 1 qtt produit et on envoie un message l'indiquant à l'utilisateur 
-                        $_SESSION['message'] = '<div  id="message" class="alert alert-warning" role="alert"> Votre produit a été supprimé du panier </div>';
-                    } else {
+                case "diminuerQtt":
+                    $id = $_GET['id'];
+                    if(isset($_SESSION['products']) && isset($id) && $_SESSION['products'][$id]['qtt'] >0){ // on verifie bien les 3 conditions entre les && : 1: que session produit existe bien et qu'elle n'est pas nulle ,2: que session produit est liée a un id et 3:que la qtt initiale est bien > 0 (existante)
                         
                         
-                    }
+                        $_SESSION['products'][$id]['qtt']--; //pour decrementer la quantitée de 1
+                        $_SESSION['message'] = '<div class="alert alert-success" role="alert"> Vous avez diminué la quantité de votre produit! </div>';
+                        // $_SESSION['products'][$id]['total'] = $_SESSION['products'][$id]['qtt']*$_SESSION['products'][$id]['price']; //on reevalue le prix totale apres changement de quantitée 
+                        if ($_SESSION['products'][$id]['qtt'] == 0) {
+                            unset($_SESSION['products'][$id]);  //on verifie si la quantitée est nul apres suppresion de 1 qtt produit et on envoie un message l'indiquant à l'utilisateur 
+                            $_SESSION['message'] = '<div  id="message" class="alert alert-warning" role="alert"> Votre produit a été supprimé du panier </div>';
+                        } else {
+                            
+                            
+                        }
                 
                 }
                 
                 header("Location: recap.php"); exit;
                 break;
+                
+                case "supprimer": 
+                    if (isset($_SESSION['products'][$id])) {
+                        unset($_SESSION['products'][$id]);
+                        $_SESSION['message'] = '<div class="alert alert-success" role="alert"> Le produit a été supprimé avec succès ! </div>';
+                    } else {
+                        $_SESSION['message'] = '<div class="alert alert-danger" role="alert"> le produit à supprimer n\'existe pas ! </div>';
+                    }
+                    
+                    header("Location:recap.php");die;
+                    break;
+
+
 
 
             }

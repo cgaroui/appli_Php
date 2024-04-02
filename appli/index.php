@@ -7,10 +7,23 @@ require_once('nbArticles.php');
 ob_start();
 
 ?>
+ <div class="d-grid gap-2 col-6 mx-auto">
+
+    <button type="button" class="btn btn-primary">
+        <a href="index.php">Ajout produit</a>
+    </button>
+    <button type="button" class="btn btn-light">
+        <a href="recap.php">Panier</a>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            <?= NombreProduits() ?>
+                <span class="visually-hidden"></span>
+            </span>
+    </button>
 
 
 
-<div class="d-grid gap-2 col-6 mx-auto">
+
+
     <form action="traitement.php?action=ajouterProduit" method="post">           <!-- Utilisation de la méthode POST pour envoyer les données du formulaire au serveur -->
     
         <label >
