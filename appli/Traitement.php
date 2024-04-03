@@ -94,7 +94,7 @@ session_start();
                 break;
 
                 case "supprimer": 
-                    //vérifier si le parametre id est defini dans l'url et si le produit existe 
+                    //vérifier si le parametre id est defini dans l'url et si le produit existe en session
                     if (isset($_GET["id"]) && isset($_SESSION['products'][$_GET["id"]])) {
                         $supprimerProd = $_SESSION['products'][$_GET["id"]];
                         //suppprimer le produit 
