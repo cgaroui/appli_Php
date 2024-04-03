@@ -16,7 +16,16 @@ session_start();
                     $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                     $price = filter_input(INPUT_POST,"price", FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
                     $qtt = filter_input(INPUT_POST, "qtt", FILTER_VALIDATE_INT);
-            
+                    
+                    if(isset($_FILES['file'])){     //on verifie si le fichier existe 
+                        //stocker les informations dans des variables 
+                        $tmpName= $_FILES['file']['tmp_name'];
+                        $name = $_FILES[ 'file']['name'];
+                        $size = $_FILES['file']['size'];
+                        $error = $_files['file']['error'];
+                        move_uploaded_file($tmpName, './upload/'.$name); //pour enregistrer notre fichier (ici image) dans le dossier upload
+                    }
+                
                     if($name && $price && $qtt){
             
                         $product = [
@@ -24,7 +33,7 @@ session_start();
                             "price"=>$price,
                             "qtt"  =>$qtt,
                             "total"=>$price*$qtt,
-                            
+                            ""
                         ];
                     
                     
@@ -110,9 +119,9 @@ session_start();
                     break;
 
 
-
-
             }
+
+          
 
   
     header("Location:recap.php");

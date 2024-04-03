@@ -83,6 +83,8 @@
         // Supprime le message de la session après l'avoir affiché
         unset($_SESSION['message']);
     }
+
+    
     ?>
 </div>
 

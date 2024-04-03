@@ -22,7 +22,7 @@ ob_start();
                 </span>
         </button>
 
-        <form style="display: flex; flex-direction: column " action="traitement.php?action=ajouterProduit" method="post">           <!-- Utilisation de la méthode POST pour envoyer les données du formulaire au serveur -->
+        <form style="display: flex; flex-direction: column " action="traitement.php?action=ajouterProduit" method="post" enctype="multipart/form-data">           <!-- Utilisation de la méthode POST pour envoyer les données du formulaire au serveur -->
         
             <label >
                 Nom du produit : <br>
@@ -38,8 +38,10 @@ ob_start();
                 Quantité desirée : <br>
                 <input min=1 id="" style="width: 300px;" type="number" name="qtt" value="1">
             </label>
-        
-        
+
+            <label for="file">
+            <input type="file" name="file">
+            </label>
 
             <input style="width: 150px;" class="btn btn-primary" type="submit" name="submit" value="ajouter le produit">
         </form>
@@ -47,9 +49,15 @@ ob_start();
         </div>
             
 </div>
-    <?php
-        $content = ob_get_clean();
-        $title = "Ajout produit";
-        require_once "template.php"; 
-    ?>
+<?php
+
     
+
+
+
+
+
+    $content = ob_get_clean();
+    $title = "Ajout produit";
+    require_once "template.php"; 
+?>
