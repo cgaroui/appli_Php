@@ -12,28 +12,48 @@ session_start();
 
             case "ajouterProduit":
                 if(isset($_POST['submit'])){
-
+                    //filtres sur nos champs de varioables pour n'avoir que le type de valeur demandé (ex : qtt aura pour type int et rien d'autre )
                     $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                     $price = filter_input(INPUT_POST,"price", FILTER_VALIDATE_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
                     $qtt = filter_input(INPUT_POST, "qtt", FILTER_VALIDATE_INT);
+                    $image = "upload/";
                     
-                    if(isset($_FILES['file'])){     //on verifie si le fichier existe 
-                        //stocker les informations dans des variables 
-                        $tmpName= $_FILES['file']['tmp_name'];
-                        $name = $_FILES[ 'file']['name'];
+
+                    $image =  $_FILES['file']['tmp_name'];
+                    if(isset($_FILES['file'])) {
+                        $tmpName = $_FILES['file']['tmp_name'];
+                        $nameImage = $_FILES['file']['nameImage'];
                         $size = $_FILES['file']['size'];
-                        $error = $_files['file']['error'];
-                        move_uploaded_file($tmpName, './upload/'.$name); //pour enregistrer notre fichier (ici image) dans le dossier upload
+                        $error = $_FILES['file']['error'];
+
+                        $cheminImage = 'upload/'.$nameImage;   //je stocke le chemin de l'image dans une variable pour l'appeler plutard pour l'affichage direct de l'immage 
+
+                        $tabExtension = explode('.', $nameImage);        // explode permets de découper une chaîne de caractère en plusieurs morceaux à partir d’un délimiteur"."(ex : "1021"=>"10.21")
+                        $extension = strtolower(end($tabExtension));    //strtolower met toute la chaine en minuscule puis on utilise end() pour recuperer dernier element (ici ce sera l'extension jpg ou autre )
+                    
+                        $extensions = ['jpg', 'png', 'jpeg', 'gif'];        //tableau des extensions autorisé
+
+                        if(in_array($extension,$extensions) && $size <= $tailleMax && $error == 0){   
+                            $uniqueName = uniqid('',true);                  //genere une nom unique (en hexadécimal)
+                            $nameImage = $uniqueName. '.' .$extension;           //ce sera le nom géneré précedement avec l'extension .jpg par ex
+                            move_uploaded_file($tmpName, './upload/'. $nameImage);   //telecharge l'image dans et la met dans le dossier upload 
+                        }
+                        else{
+                            echo "Mauvaise extension";
+                        }
                     }
+
+                  
                 
-                    if($name && $price && $qtt){
+                    if($name && $price && $qtt && $cheminImage ) {
             
                         $product = [
                             "name"=>$name,
                             "price"=>$price,
                             "qtt"  =>$qtt,
-                            "total"=>$price*$qtt,
-                            ""
+                            "total"=>$price * $qtt,
+                            "image"=> $cheminImage,
+                           
                         ];
                     
                     
@@ -49,7 +69,7 @@ session_start();
                     header("Location: index.php");
                     exit();
 
-
+    
                 
 
             case "viderPanier":
@@ -59,7 +79,7 @@ session_start();
                     
                 }
                 header("Location: recap.php"); exit;
-                break;
+                exit();
             
             
             

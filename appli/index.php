@@ -41,6 +41,7 @@ ob_start();
 
             <label for="file">
             <input type="file" name="file">
+
             </label>
 
             <input style="width: 150px;" class="btn btn-primary" type="submit" name="submit" value="ajouter le produit">
