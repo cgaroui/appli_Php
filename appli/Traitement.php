@@ -20,23 +20,29 @@ session_start();
                     
 
                     $image =  $_FILES['file']['tmp_name'];
+                    // var_dump('ok');die;
                     if(isset($_FILES['file'])) {
+                        // var_dump('okk');die;
                         $tmpName = $_FILES['file']['tmp_name'];
-                        $nameImage = $_FILES['file']['nameImage'];
+                        $nameImage = $_FILES['file']['name'];
                         $size = $_FILES['file']['size'];
                         $error = $_FILES['file']['error'];
-
-                        $cheminImage = 'upload/'.$nameImage;   //je stocke le chemin de l'image dans une variable pour l'appeler plutard pour l'affichage direct de l'immage 
-
+                        // var_dump('if');die;
+                        $cheminImage = 'upload/'.$nameImage;                //je stocke le chemin de l'image dans une variable pour l'appeler plutard pour l'affichage direct de l'immage 
+                        // var_dump($cheminImage );die;
                         $tabExtension = explode('.', $nameImage);        // explode permets de découper une chaîne de caractère en plusieurs morceaux à partir d’un délimiteur"."(ex : "1021"=>"10.21")
+                        
                         $extension = strtolower(end($tabExtension));    //strtolower met toute la chaine en minuscule puis on utilise end() pour recuperer dernier element (ici ce sera l'extension jpg ou autre )
-                    
-                        $extensions = ['jpg', 'png', 'jpeg', 'gif'];        //tableau des extensions autorisé
-
+                        // var_dump('avant if array');die;
+                        $extensions = ['jpg', 'png', 'jpeg', 'gif'];          //tableau des extensions autorisé
+                        $tailleMax = 12512353;
                         if(in_array($extension,$extensions) && $size <= $tailleMax && $error == 0){   
-                            $uniqueName = uniqid('',true);                  //genere une nom unique (en hexadécimal)
-                            $nameImage = $uniqueName. '.' .$extension;           //ce sera le nom géneré précedement avec l'extension .jpg par ex
-                            move_uploaded_file($tmpName, './upload/'. $nameImage);   //telecharge l'image dans et la met dans le dossier upload 
+                            // var_dump('dans le if array');die;
+                            $uniqueName = uniqid('',true);                                  //genere une nom unique (en hexadécimal)
+                            var_dump($uniqueName);
+                            $nameImage = $uniqueName. '.' .$extension;                       //ce sera le nom géneré précedement avec l'extension .jpg par ex
+                            move_uploaded_file($tmpName, './upload/'. $nameImage);           //telecharge l'image dans et la met dans le dossier upload 
+                            $cheminImage = './upload/'. $nameImage;                         //le chemin mis a jour 
                         }
                         else{
                             echo "Mauvaise extension";

@@ -52,13 +52,7 @@ ob_start();
 </div>
 <?php
 
-    
-
-
-
-
-
     $content = ob_get_clean();
-    $title = "Ajout produit";
+    $titre = "Ajout produit";
     require_once "template.php"; 
 ?>
